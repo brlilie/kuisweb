@@ -1,5 +1,9 @@
 <?php
 include "connection.php";
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT); 
